@@ -108,10 +108,7 @@ public class Main {
         int arr[] = new int[5];
 
         Operations.getNumbers(arr);
-
-        for(int i = 0; i < arr.length; i++){
-            System.out.println(arr[i]);
-        }
+        
         Operations.sort(arr);
         Operations.withSortedDigits(arr);
         Operations.withSimpleDigits(arr);
