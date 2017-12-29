@@ -1,9 +1,9 @@
-/*package com;
+package com;
 import java.util.Date;
 /**
  * Created by MAX on 27.12.2017.
  */
-/*public class Ticket {
+public class Ticket {
     private String from, to;
     private Date fromDate, toDate;
     private int trainId;
@@ -18,4 +18,3 @@ import java.util.Date;
         return to;
     }
 }
-*/

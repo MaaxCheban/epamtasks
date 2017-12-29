@@ -7,8 +7,10 @@ import java.util.*;
  */
 public class TicketsMenu {
     private ArrayList<Train> trains;
-    TicketsMenu(ArrayList<Train>  trains){
-        this.trains = trains;
+    public TrainSystemSettings trainSystem;
+    TicketsMenu(){
+        trainSystem = new TrainSystemSettings();
+        this.trains = trainSystem.getTrains();
     }
     public ArrayList<Train> findTrains(String startLocation, String endLocation){
         ArrayList<Train> trainsArr = new ArrayList();
@@ -32,6 +34,9 @@ public class TicketsMenu {
     }
 
     public ArrayList<Train> findTrains(GregorianCalendar departureDate){
+        if(departureDate.getTimeInMillis() < new GregorianCalendar().getTimeInMillis()){
+            return null;
+        }
         ArrayList<Train> trainsArr = new ArrayList();
 
         for(Train t: trains){
@@ -52,11 +57,16 @@ public class TicketsMenu {
     }
 
     public ArrayList<Train> findTrains(String startLocation, String endLocation, GregorianCalendar departureDate){
+        if(departureDate.getTimeInMillis() < new GregorianCalendar().getTimeInMillis()){
+            return null;
+        }
+        trains = trainSystem.getTrains();
         ArrayList<Train> trainsArr = new ArrayList();
 
         for(Train t: trains){
             if(t.getFreeSeats() == 0) continue;
             boolean isFrom = false, isTo = false;
+            //System.out.println(t.getId());
             for(Station s : t.getStations()){
 
                 //remove bag
@@ -76,7 +86,9 @@ public class TicketsMenu {
             }
         }
 
+        ArrayList<Train> resultArr = new ArrayList();
         int i = 0;
+
         for(Train t: trainsArr){
             if(t.getFreeSeats() == 0) continue;
             if(!t.isWorkingDate(departureDate)) {
@@ -86,20 +98,23 @@ public class TicketsMenu {
 
             for(Station s : t.getStations()){
                 if(s.getName() == startLocation){
-                    if((s.getDepartureDate().get(Calendar.HOUR) <  departureDate.get(Calendar.HOUR))){
-                        trainsArr.remove(i++);
+                    if((s.getDepartureDate().get(Calendar.HOUR) >=  departureDate.get(Calendar.HOUR))){
+                        resultArr.add(trainsArr.get(i++));
                     }
                 }
 
             }
         }
 
-        showFoundTrains(trainsArr);
+        showFoundTrains(resultArr);
 
-        return trainsArr;
+        return resultArr;
     }
 
     private void showFoundTrains(ArrayList<Train> tr){
+        if(tr == null){
+            System.out.println("No trains found");
+        }
         for(Train t: tr){
             System.out.println(t.getStations().get(0).getName() + "-" +
                     t.getStations().get(t.getStations().size() - 1).getName() + " " +

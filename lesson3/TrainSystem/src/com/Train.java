@@ -59,13 +59,16 @@ public class Train {
         pauseDates.add(pday);
     }
     public boolean isWorkingDate(GregorianCalendar checkingDate){
-        GregorianCalendar val = checkingDate;
-        for(GregorianCalendar pdate : pauseDates){
-            if(pdate.get(Calendar.DATE) == checkingDate.get(Calendar.DATE)){
 
-                return false;
+        GregorianCalendar val = checkingDate;
+        if(pauseDates != null){
+            for(GregorianCalendar pdate : pauseDates){
+                if(pdate.get(Calendar.DATE) == checkingDate.get(Calendar.DATE)){
+                    return false;
+                }
             }
         }
+
         int dayOfTheWeek = checkingDate.get(Calendar.DAY_OF_WEEK);
         for(int wDay: workDays){
             if(dayOfTheWeek == wDay){
