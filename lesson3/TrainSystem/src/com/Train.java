@@ -17,6 +17,7 @@ public class Train {
         this.stations = stations;
         this.freeSeats = freeSeats;
         this.workDays = workDays;
+        pauseDates = new ArrayList();
         id = (int)(Math.random() * 100000) + 1;
         initStationsWithId();
     }
@@ -60,7 +61,6 @@ public class Train {
     }
     public boolean isWorkingDate(GregorianCalendar checkingDate){
 
-        GregorianCalendar val = checkingDate;
         if(pauseDates != null){
             for(GregorianCalendar pdate : pauseDates){
                 if(pdate.get(Calendar.DATE) == checkingDate.get(Calendar.DATE)){

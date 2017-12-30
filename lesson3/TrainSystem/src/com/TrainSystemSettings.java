@@ -8,14 +8,9 @@ import java.util.GregorianCalendar;
  */
 public class TrainSystemSettings {
     private ArrayList<ArrayList<Station>> stationsList;
-
     private ArrayList<Train> trainsArray;
-    private ArrayList<GregorianCalendar> pauseDates;
-    public TicketsMenu ticketsMenu;
-    private int index;
+
     TrainSystemSettings(){
-        index = 0;
-        pauseDates = new ArrayList();
         stationsList = new ArrayList<ArrayList<Station>>(4);
         initStations();
         initTrains();
