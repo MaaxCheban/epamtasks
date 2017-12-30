@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
 
         TicketsMenu menu = new TicketsMenu();
-        menu.findTrains("Ivano Frankivsk","Lviv",new GregorianCalendar(2018,1,15,2,0));
+        menu.findTrains(new GregorianCalendar(2018,1,15,2,0));
 
         //Example of adding new train into system
         ArrayList<Station> stationsList = new ArrayList();

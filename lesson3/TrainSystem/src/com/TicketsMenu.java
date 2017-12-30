@@ -98,6 +98,7 @@ public class TicketsMenu {
             System.out.println("No trains found");
             return;
         }
+        System.out.println("Found trains");
         for(Train t: tr){
             System.out.println(t.getStations().get(0).getName() + "-" +
                     t.getStations().get(t.getStations().size() - 1).getName() + " " +
