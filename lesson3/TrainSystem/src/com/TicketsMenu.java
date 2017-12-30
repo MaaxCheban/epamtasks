@@ -7,10 +7,13 @@ import java.util.*;
  */
 public class TicketsMenu {
     private ArrayList<Train> trains;
-    public TrainSystemSettings trainSystem;
+    private TrainSystemSettings trainSystem;
     TicketsMenu(){
         trainSystem = new TrainSystemSettings();
         this.trains = trainSystem.getTrains();
+    }
+    public TrainSystemSettings getTrainSystem(){
+        return trainSystem;
     }
     public ArrayList<Train> findTrains(String startLocation, String endLocation){
         ArrayList<Train> trainsArr = new ArrayList();

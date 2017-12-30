@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
 
         TicketsMenu menu = new TicketsMenu();
-        menu.findTrains(new GregorianCalendar(2018,1,15,2,0));
+        menu.findTrains("Ivano Frankivsk","Lviv",new GregorianCalendar(2018,1,15,2,0));
 
         //Example of adding new train into system
         ArrayList<Station> stationsList = new ArrayList();
@@ -22,7 +22,7 @@ public class Main {
 
         Train t = new Train(stationsList, 300,new int[]{1,3,4,5,6,7});//Every day except monday(Monday's index is 2)
         //t.setPauseDays(new GregorianCalendar(2018,0,7)); // Possible configurations
-        menu.trainSystem.addTrain(t);
+        menu.getTrainSystem().addTrain(t);
 
         menu.findTrains("Ivano Frankivsk","Lviv",new GregorianCalendar(2018,0,7,2,0));
 

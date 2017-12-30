@@ -54,7 +54,13 @@ public class TrainSystemSettings {
     public void addTrain(Train t){
         trainsArray.add(t);
     }
+    public void removeTrain(int index){
+        trainsArray.remove(index);
+    }
     public ArrayList<Train> getTrains(){
         return trainsArray;
+    }
+    public void setTrains(ArrayList<Train> trainsArray){
+        this.trainsArray = trainsArray;
     }
 }
