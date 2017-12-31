@@ -17,9 +17,9 @@ public class TrainSystemSettings {
 
     }
     public void initTrains() throws FileNotFoundException {
-        //System.out.println("Print name of the file");
+        System.out.println("Print name of the file");
         String fileName;
-        //Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         fileName = "TrainsDataBase.txt";//scan.nextLine();
         File database = new File(fileName);
 
