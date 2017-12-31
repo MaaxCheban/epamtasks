@@ -43,6 +43,7 @@ public class TrainsMenu {
             }
         }
 
+        showFoundTrains(trainsArr);
         return trainsArr;
     }
 
@@ -74,21 +75,28 @@ public class TrainsMenu {
         }
         this.trains = trainSystem.getTrains();
 
-        /*for(Train t : trains){
+
+        ArrayList<Train> trainsArr = new ArrayList();
+        for(Train t: trains){
+
+            if(t.getFreeSeats() == 0) continue;
+            boolean isFrom = false, isTo = false;
             for(Station s : t.getStations()){
-                System.out.print(s.getName() + " ");
-                System.out.print(s.getDepartureDate().get(Calendar.HOUR) + ":");
-                System.out.println(s.getDepartureDate().get(Calendar.MINUTE));
+                //remove bag
+                if(isFrom && isTo){
+                    continue;
+                }
+                if(s.getName().equals(startLocation) ){
+                    isFrom = true;
+                }
+                if(isFrom && s.getName().equals(endLocation)){
+                    isTo = true;
+                }
+                if(isFrom && isTo){
+                    trainsArr.add(t);
+                }
             }
-            System.out.println(t.getFreeSeats() + " ");
-            for(int i:t.getWorkDays()){
-                System.out.print(i + " ");
-            }
-            System.out.println();
-        }*/
-
-        ArrayList<Train> trainsArr = findTrains(startLocation, endLocation);
-
+        }
 
         ArrayList<Train> resultArr = new ArrayList();
         int i = 0;
@@ -102,7 +110,7 @@ public class TrainsMenu {
             for(Station s : t.getStations()){
 
                 if(s.getName().equals(startLocation)){
-                    if(s.getDepartureDate().get(Calendar.HOUR) >=  departureDate.get(Calendar.HOUR)){
+                    if(s.getDepartureDate().get(Calendar.HOUR_OF_DAY) >=  departureDate.get(Calendar.HOUR_OF_DAY)){
                         resultArr.add(trainsArr.get(i++));
                     }
                 }

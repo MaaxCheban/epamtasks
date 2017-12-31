@@ -9,7 +9,7 @@ public class Main {
 
         TrainsMenu menu = new TrainsMenu();
 
-        menu.findTrains("Ivano Frankivsk","Lviv",new GregorianCalendar(2018,1,15,8,0));
+        menu.findTrains("Odessa","Lviv",new GregorianCalendar(2018,1,21,15,0));
 
 
     }

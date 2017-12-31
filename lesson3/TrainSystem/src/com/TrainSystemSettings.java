@@ -9,7 +9,6 @@ import java.util.Scanner;
  * Created by MAX on 29.12.2017.
  */
 public class TrainSystemSettings {
-    //private ArrayList<ArrayList<Station>> stationsList;
     private ArrayList<Train> trainsArray;
 
     TrainSystemSettings() throws FileNotFoundException {
@@ -18,10 +17,10 @@ public class TrainSystemSettings {
 
     }
     public void initTrains() throws FileNotFoundException {
-        System.out.println("Print name of the file");
+        //System.out.println("Print name of the file");
         String fileName;
-        Scanner scan = new Scanner(System.in);
-        fileName = scan.nextLine();
+        //Scanner scan = new Scanner(System.in);
+        fileName = "TrainsDataBase.txt";//scan.nextLine();
         File database = new File(fileName);
 
         if(database.exists()) {
@@ -38,6 +37,7 @@ public class TrainSystemSettings {
                         Train t = new Train(stations, 300, new int[]{1,2,3,4,5,6,7});
                         trainsArray.add(t);
                         stations =  new ArrayList();
+
                     }
                     continue;
                 }
