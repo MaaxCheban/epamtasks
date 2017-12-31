@@ -151,12 +151,12 @@ public class TrainsMenu {
                 if(s.getName().equals(startLocation)){
                     System.out.print(
                             s.getDepartureDate().get(Calendar.DATE)
-                                    + " date " + s.getDepartureDate().get(Calendar.HOUR) + " hours "
+                                    + " date " + s.getDepartureDate().get(Calendar.HOUR_OF_DAY) + " hours "
                                     + " " + s.getDepartureDate().get(Calendar.MINUTE) + " minutes / ");
                 }
                 if(s.getName().equals(endLocation)){
                     System.out.println(s.getArrivalDate().get(Calendar.DATE)
-                            + " date " + s.getArrivalDate().get(Calendar.HOUR) + " hours "
+                            + " date " + s.getArrivalDate().get(Calendar.HOUR_OF_DAY) + " hours "
                             + s.getArrivalDate().get(Calendar.MINUTE) + " minutes " );
                 }
             }
