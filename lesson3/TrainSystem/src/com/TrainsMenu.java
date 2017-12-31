@@ -99,7 +99,7 @@ public class TrainsMenu {
         }
 
         ArrayList<Train> resultArr = new ArrayList();
-        int i = 0;
+
 
         for(Train t: trainsArr){
             if(t.getFreeSeats() == 0) continue;
@@ -111,7 +111,7 @@ public class TrainsMenu {
 
                 if(s.getName().equals(startLocation)){
                     if(s.getDepartureDate().get(Calendar.HOUR_OF_DAY) >=  departureDate.get(Calendar.HOUR_OF_DAY)){
-                        resultArr.add(trainsArr.get(i++));
+                        resultArr.add(t);
                     }
                 }
 
