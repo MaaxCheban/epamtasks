@@ -1,6 +1,5 @@
 package com;
 
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
@@ -21,6 +20,9 @@ class Station{
     public String getName(){
         return name;
     }
+    public void setName(String name){
+        this.name = name;
+    }
     public GregorianCalendar getArrivalDate(){
         return arrivalDate;
     }
@@ -37,12 +39,15 @@ class Station{
         return waitingTime;
     }
     public void SetWaitingTime(int waitingTime){
+        if(waitingTime < 0){
+            System.out.println("Error: train waiting time is negative");
+        }
         this.waitingTime = waitingTime;
     }
     public void setId(int id){
        trainIdBinding = id;
     }
-    public String getId(){
-        return name;
+    public int getId(){
+        return trainIdBinding;
     }
 }

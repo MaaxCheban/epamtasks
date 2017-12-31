@@ -1,7 +1,6 @@
 package com;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
@@ -47,21 +46,37 @@ public class Train {
     public int getFreeSeats(){
         return freeSeats;
     }
+    public void setFreeSeats(int freeSeats){
+        if(freeSeats < 0){
+            System.out.println("Error: negative seats number");
+        }
+        this.freeSeats = freeSeats;
+    }
     public int[] getWorkDays(){
         return this.workDays;
     }
     public void setWorkDays( int workDays[]){
+        if(workDays.length > 7){
+            System.out.println("Error: working days more than 7");
+            return;
+        }
+        for(int day: workDays){
+            if(day < 0 || day > 7){
+                System.out.println("Error: week day index is wrong " + day);
+                return;
+            }
+        }
         this.workDays = workDays;
     }
     public ArrayList<GregorianCalendar>  getPauseDates(){
         return pauseDates;
     }
-    public void setPauseDays(GregorianCalendar pday){
+    public void setPauseDates(GregorianCalendar pday){
         pauseDates.add(pday);
     }
     public boolean isWorkingDate(GregorianCalendar checkingDate){
 
-        if(pauseDates != null){
+        if(!pauseDates.isEmpty()){
             for(GregorianCalendar pdate : pauseDates){
                 if(pdate.get(Calendar.DATE) == checkingDate.get(Calendar.DATE)){
                     return false;
@@ -70,9 +85,11 @@ public class Train {
         }
 
         int dayOfTheWeek = checkingDate.get(Calendar.DAY_OF_WEEK);
-        for(int wDay: workDays){
-            if(dayOfTheWeek == wDay){
-                return true;
+        if(workDays != null){
+            for(int wDay: workDays){
+                if(dayOfTheWeek == wDay){
+                    return true;
+                }
             }
         }
         return false;

@@ -1,58 +1,63 @@
 package com;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+import java.util.Scanner;
 
 /**
  * Created by MAX on 29.12.2017.
  */
 public class TrainSystemSettings {
-    private ArrayList<ArrayList<Station>> stationsList;
+    //private ArrayList<ArrayList<Station>> stationsList;
     private ArrayList<Train> trainsArray;
 
-    TrainSystemSettings(){
-        stationsList = new ArrayList<ArrayList<Station>>(4);
-        initStations();
-        initTrains();
-    }
-    private void initStations(){
-
-        stationsList.add(new ArrayList());
-        stationsList.add(new ArrayList());
-        stationsList.add(new ArrayList());
-        stationsList.add(new ArrayList());
-
-
-        stationsList.get(0).add(new Station("Chernivtsi", new int[]{6, 1},10));
-        stationsList.get(0).add(new Station("Kolomia", new int[]{7, 0},10));
-        stationsList.get(0).add(new Station("Ivano Frankivsk", new int[]{8, 1}, 10));
-        stationsList.get(0).add(new Station("Lviv", new int[]{9, 55}, 0));
-
-        stationsList.get(1).add(new Station("Odessa", new int[]{23, 30},10));
-        stationsList.get(1).add(new Station("Chernivtsi", new int[]{8, 0},10));
-        stationsList.get(1).add(new Station("Lviv", new int[]{9, 55}, 0));
-
-        stationsList.get(2).add(new Station("Kolomia", new int[]{7, 0},10));
-        stationsList.get(2).add(new Station("Ivano Frankivsk", new int[]{8, 1}, 10));
-        stationsList.get(2).add(new Station("Lviv", new int[]{9, 55}, 10));
-        stationsList.get(2).add(new Station("Kovel", new int[]{9, 55}, 0));
-
-        stationsList.get(3).add(new Station("Odessa", new int[]{23, 35},10));
-        stationsList.get(3).add(new Station("Chernivtsi", new int[]{4, 1}, 10));
-        stationsList.get(3).add(new Station("Ivano Frankivsk", new int[]{4, 55}, 10));
-        stationsList.get(3).add(new Station("Lviv", new int[]{7, 15}, 15));
-        stationsList.get(3).add(new Station("Kiev", new int[]{10, 0}, 0));
-    }
-    private void initTrains(){
+    TrainSystemSettings() throws FileNotFoundException {
         trainsArray = new ArrayList();
+        initTrains();
 
-        trainsArray.add(new Train(stationsList.get(0), 300, new int[]{1,2,3,4,5,6,7}));//Second parametr is an array of days when train starts its new trip
-        trainsArray.add(new Train(stationsList.get(1), 300, new int[]{1,2,3,4,5,6,7}));//that means train go through every station and do it again in n day
-        trainsArray.add(new Train(stationsList.get(2), 300, new int[]{1,2,3,4,5,6,7}));
-        trainsArray.add(new Train(stationsList.get(3), 300, new int[]{1,2,3,4,5,6,7}));
+    }
+    public void initTrains() throws FileNotFoundException {
+        System.out.println("Print name of the file");
+        String fileName;
+        Scanner scan = new Scanner(System.in);
+        fileName = scan.nextLine();
+        File database = new File(fileName);
+
+        if(database.exists()) {
+            Scanner dataBaseScan = new Scanner(database);
+            ArrayList<Station> stations = new ArrayList();
+            while(dataBaseScan.hasNextLine()) {
+                String line = dataBaseScan.nextLine();
+
+                if(line.equals("Train")){
+                    continue;
+                }
+                if(line.equals("Train end")){
+                    if(!stations.isEmpty()){
+                        Train t = new Train(stations, 300, new int[]{1,2,3,4,5,6,7});
+                        trainsArray.add(t);
+                        stations =  new ArrayList();
+                    }
+                    continue;
+                }
+                String dataArr[];
+                int hours, minutes, waitingTime, workDays[];
+                dataArr = line.split(",");
+                String name = dataArr[0].split(":")[1];
+                hours = Integer.parseInt(dataArr[1].split(":")[1]);
+                minutes =  Integer.parseInt(dataArr[2].split(":")[1]);
+                waitingTime =  Integer.parseInt(dataArr[3].split(":")[1]);
+                Station s = new Station(name, new int[]{hours,minutes}, waitingTime);
+                stations.add(s);
+            }
+        }else{
+            System.out.println("no file found");
+        }
     }
     public void addTrain(Train t){
         trainsArray.add(t);
+
     }
     public void removeTrain(int index){
         trainsArray.remove(index);

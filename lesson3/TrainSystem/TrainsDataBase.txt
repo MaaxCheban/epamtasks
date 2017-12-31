@@ -1,0 +1,26 @@
+Train
+Station:Chernivtsi,arrival hours:6,arrival minuts:1,waiting time:10
+Station:Kolomia,arrival hours:7,arrival minuts:0,waiting time:10
+Station:Ivano Frankivsk,arrival hours:8,arrival minuts:15,waiting time:10
+Station:Lviv,arrival hours:9,arrival minuts:55,waiting time:0
+Train end
+Train
+Station:Odessa,arrival hours:6,arrival minuts:1,waiting time:10
+Station:Chernivtsi,arrival hours:7,arrival minuts:10,waiting time:10
+Station:Ivano Frankivsk,arrival hours:8,arrival minuts:15,waiting time:10
+Station:Lviv,arrival hours:9,arrival minuts:55,waiting time:10
+Station:Kiev,arrival hours:10,arrival minuts:0,waiting time:0
+Train end
+Train
+Station:Khotin,arrival hours:4,arrival minuts:15,waiting time:10
+Station:Chernivtsi,arrival hours:5,arrival minuts:10,waiting time:10
+Station:Ivano Frankivsk,arrival hours:7,arrival minuts:15,waiting time:10
+Station:Lviv,arrival hours:8,arrival minuts:55,waiting time:10
+Station:Kiev,arrival hours:14,arrival minuts:0,waiting time:0
+Train end
+Train
+Station:Odessa,arrival hours:22,arrival minuts:55,waiting time:10
+Station:Chernivtsi,arrival hours:5,arrival minuts:10,waiting time:10
+Station:Lviv,arrival hours:9,arrival minuts:15,waiting time:10
+Station:Kovel,arrival hours:11,arrival minuts:0,waiting time:0
+Train end
