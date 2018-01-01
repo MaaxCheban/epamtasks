@@ -20,7 +20,7 @@ public class TrainSystemSettings {
         System.out.println("Print name of the file");
         String fileName;
         Scanner scan = new Scanner(System.in);
-        fileName = "TrainsDataBase.txt";//scan.nextLine();
+        fileName = scan.nextLine();
         File database = new File(fileName);
 
         if(database.exists()) {

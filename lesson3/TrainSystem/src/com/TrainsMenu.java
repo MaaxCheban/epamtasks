@@ -7,11 +7,10 @@ import java.util.*;
  * Created by MAX on 27.12.2017.
  */
 public class TrainsMenu {
-    private ArrayList<Train> trains;
+
     private TrainSystemSettings trainSystem;
     TrainsMenu() throws FileNotFoundException {
         trainSystem = new TrainSystemSettings();
-        this.trains = trainSystem.getTrains();
     }
     public TrainSystemSettings getTrainSystem(){
         return trainSystem;
@@ -22,7 +21,7 @@ public class TrainsMenu {
     public ArrayList<Train> findTrains(String startLocation, String endLocation){
 
         ArrayList<Train> trainsArr = new ArrayList();
-        for(Train t: trains){
+        for(Train t: trainSystem.getTrains()){
 
             if(t.getFreeSeats() == 0) continue;
             boolean isFrom = false, isTo = false;
@@ -53,7 +52,7 @@ public class TrainsMenu {
         }
         ArrayList<Train> trainsArr = new ArrayList();
 
-        for(Train t: trains){
+        for(Train t: trainSystem.getTrains()){
             if(t.getFreeSeats() == 0) continue;
             if(!t.isWorkingDate(departureDate)) {
                 continue;
@@ -73,11 +72,10 @@ public class TrainsMenu {
         if(departureDate.getTimeInMillis() < new GregorianCalendar().getTimeInMillis()){
             return null;
         }
-        this.trains = trainSystem.getTrains();
 
 
         ArrayList<Train> trainsArr = new ArrayList();
-        for(Train t: trains){
+        for(Train t: trainSystem.getTrains()){
 
             if(t.getFreeSeats() == 0) continue;
             boolean isFrom = false, isTo = false;
