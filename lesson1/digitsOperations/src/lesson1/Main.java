@@ -108,7 +108,7 @@ public class Main {
         int arr[] = new int[5];
 
         Operations.getNumbers(arr);
-        
+
         Operations.sort(arr);
         Operations.withSortedDigits(arr);
         Operations.withSimpleDigits(arr);

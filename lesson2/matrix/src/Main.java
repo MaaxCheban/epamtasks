@@ -1,6 +1,7 @@
 
 class Cmatrix{
     private Integer matrix[][];
+    private int summAbove = 0, summBelove = 0;
     Cmatrix(){
         matrix = new Integer[4][4];
     }
@@ -8,11 +9,13 @@ class Cmatrix{
         for (int i = 0; i < 4; i++) {
             for (int j = i + 1; j < 4; j++) {
                 matrix[i][j] = new Integer ((int)(Math.random() * 10) + 1);
+                summAbove += matrix[i][j];
             }
         }
         for (int i = 3; i >= 0; i--) {
             for (int j = i - 1; j >= 0; j--) {
                 matrix[i][j] = new Integer((int) (Math.random() * 10) + 1);
+                summBelove += matrix[i][j];
             }
         }
 
@@ -22,22 +25,10 @@ class Cmatrix{
     }
 
     public int summAboveDiagonal(){
-        int summ = 0;
-        for (int i = 0; i < 4; i++) {
-            for (int j = i + 1; j < 4; j++) {
-                summ+= matrix[i][j];
-            }
-        }
-        return summ;
+        return summAbove;
     }
     public int summBelowDiagonal(){
-        int summ = 0;
-        for (int i = 3; i >= 0; i--) {
-            for (int j = i - 1; j >= 0; j--) {
-                summ += matrix[i][j];
-            }
-        }
-        return summ;
+        return summBelove;
     }
 
     public void printMatrix(){
