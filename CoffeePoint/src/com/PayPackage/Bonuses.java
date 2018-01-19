@@ -5,7 +5,7 @@ package com.PayPackage;
  */
 public class Bonuses implements Payable{
     private final double BONUS_WEIGHT = 0.1;
-    double availableMoney;
+    private double availableMoney;
     public Bonuses(int bonusCount){
         availableMoney = bonusCount * BONUS_WEIGHT;
     }

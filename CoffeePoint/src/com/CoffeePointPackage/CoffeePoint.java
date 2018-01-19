@@ -10,7 +10,7 @@ import com.ProductsVariety.Product;
 public class CoffeePoint {
     private ShoppingCart cart;
     private ProductsSystem productsSystem;
-    //private static double earnedMoney;
+    private static double earnedMoney;
     public CoffeePoint(){
         cart = new ShoppingCart();
         productsSystem = new ProductsSystem();
@@ -35,7 +35,7 @@ public class CoffeePoint {
     public void buyProducts(Payable payMethod){
         if(!payMethod.pay(getTotalCharge())){
             System.out.println("Not enough money");
-            cart = null;
+            cart =  new ShoppingCart();
             return;
         }
         try {
@@ -46,8 +46,11 @@ public class CoffeePoint {
             e.printStackTrace();
         }
 
-        cart = null;
-
+        earnedMoney += getTotalCharge();
+        cart = new ShoppingCart();
     }
 
+    public static double getEarnedMoney(){
+        return earnedMoney;
+    }
 }

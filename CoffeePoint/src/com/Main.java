@@ -2,7 +2,7 @@ package com;
 
 
 import com.CoffeePointPackage.CoffeePoint;
-import com.PayPackage.Cash;
+import com.PayPackage.*;
 import com.ProductsVariety.*;
 
 public class Main {
@@ -19,5 +19,14 @@ public class Main {
         customer.chooseProduct(new HotDog());
         customer.buyProducts();
 
+
+        Customer customer2 = new Customer(new Bonuses(5000));
+
+        customer.chooseProduct(new CoffeeWithCream());
+        customer.chooseProduct(new HotDog());
+
+        customer.buyProducts();
+
+        System.out.println(coffeePoint.getEarnedMoney());
     }
 }
