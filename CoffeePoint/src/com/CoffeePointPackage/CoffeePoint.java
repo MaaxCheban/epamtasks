@@ -1,8 +1,8 @@
 package com.CoffeePointPackage;
 
 
+import com.CoffeePointPackage.ProductsVariety.Product;
 import com.PayPackage.Payable;
-import com.ProductsVariety.Product;
 
 /**
  * Created by MAX on 18.01.2018.
@@ -33,6 +33,8 @@ public class CoffeePoint {
     }
 
     public void buyProducts(Payable payMethod){
+        if(cart.getProducts().isEmpty()) return;
+
         if(!payMethod.pay(getTotalCharge())){
             System.out.println("Not enough money");
             cart =  new ShoppingCart();

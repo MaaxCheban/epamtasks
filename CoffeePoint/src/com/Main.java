@@ -1,9 +1,12 @@
 package com;
 
 
-import com.CoffeePointPackage.CoffeePoint;
+import com.CoffeePointPackage.*;
+import com.CoffeePointPackage.ProductsVariety.CoffeeWithChocolateAndCream;
+import com.CoffeePointPackage.ProductsVariety.CoffeeWithCream;
+import com.CoffeePointPackage.ProductsVariety.HotDog;
+import com.CoffeePointPackage.ProductsVariety.PureCoffee;
 import com.PayPackage.*;
-import com.ProductsVariety.*;
 
 public class Main {
 
@@ -11,21 +14,21 @@ public class Main {
 	// write your code here
         CoffeePoint coffeePoint = new CoffeePoint();
 
-        Customer customer = new Customer(new Cash(450));
+        Customer customer = new Customer(new Cash(415));
 
         customer.initCoffeePoint(coffeePoint);
         customer.chooseProduct(new PureCoffee());
         customer.chooseProduct(new CoffeeWithChocolateAndCream());
         customer.chooseProduct(new HotDog());
         customer.buyProducts();
-
-
-        Customer customer2 = new Customer(new Bonuses(5000));
-
-        customer.chooseProduct(new CoffeeWithCream());
-        customer.chooseProduct(new HotDog());
-
         customer.buyProducts();
+
+        Customer customer2 = new Customer(new Bonuses(900));
+        customer2.initCoffeePoint(coffeePoint);
+        customer2.chooseProduct(new CoffeeWithCream());
+        customer2.chooseProduct(new HotDog());
+
+        customer2.buyProducts();
 
         System.out.println(coffeePoint.getEarnedMoney());
     }

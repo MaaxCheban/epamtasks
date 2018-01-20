@@ -8,6 +8,7 @@ public class Bonuses implements Payable{
     private double availableMoney;
     public Bonuses(int bonusCount){
         availableMoney = bonusCount * BONUS_WEIGHT;
+
     }
     public boolean pay(double moneyToPay){
         if(availableMoney < moneyToPay){

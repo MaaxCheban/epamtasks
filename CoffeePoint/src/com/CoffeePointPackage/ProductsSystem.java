@@ -1,6 +1,6 @@
 package com.CoffeePointPackage;
 
-import com.ProductsVariety.*;
+import com.CoffeePointPackage.ProductsVariety.*;
 
 import java.util.HashMap;
 import java.util.Map;

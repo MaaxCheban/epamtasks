@@ -1,4 +1,4 @@
-package com.ProductsVariety;
+package com.CoffeePointPackage.ProductsVariety;
 
 /**
  * Created by MAX on 19.01.2018.
@@ -13,7 +13,6 @@ public class PureCoffee extends Product implements Coffee{
         System.out.println("Fill whole glass of coffee");
     }
 
-    @Override
     public void productDescribtion() {
         System.out.println("Its a Coffee");
     }

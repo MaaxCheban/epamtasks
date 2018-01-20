@@ -1,6 +1,6 @@
 package com.CoffeePointPackage;
 
-import com.ProductsVariety.Product;
+import com.CoffeePointPackage.ProductsVariety.Product;
 
 import java.util.ArrayList;
 

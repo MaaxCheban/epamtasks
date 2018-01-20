@@ -1,4 +1,4 @@
-package com.ProductsVariety;
+package com.CoffeePointPackage.ProductsVariety;
 
 /**
  * Created by MAX on 18.01.2018.
@@ -6,6 +6,7 @@ package com.ProductsVariety;
 
 
 abstract public class Product {
+
     abstract public void productDescribtion();
     abstract public void createProduct();
     @Override
