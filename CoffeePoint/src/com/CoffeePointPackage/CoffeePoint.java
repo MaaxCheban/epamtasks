@@ -55,4 +55,17 @@ public class CoffeePoint {
     public static double getEarnedMoney(){
         return earnedMoney;
     }
+
+    public static void setEarnedMoney(double money){
+        earnedMoney = money;
+    }
+
+    public ShoppingCart getShoppingCart(){
+        return cart;
+    }
+
+    public void setShoppingCart(ShoppingCart cart){
+        this.cart = cart;
+    }
+
 }

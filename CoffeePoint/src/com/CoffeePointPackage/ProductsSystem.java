@@ -10,8 +10,8 @@ import java.util.Map;
  */
 public class ProductsSystem {
 
-    public Map<Product, Double> priceProductsMap = new HashMap<Product, Double>();
-    public Map<Product, Integer> countProductsMap = new HashMap<Product, Integer>();
+    private Map<Product, Double> priceProductsMap = new HashMap<Product, Double>();
+    private Map<Product, Integer> countProductsMap = new HashMap<Product, Integer>();
     ProductsSystem(){
 
         priceProductsMap.put(new PureCoffee(), 12.0);
@@ -27,6 +27,23 @@ public class ProductsSystem {
         countProductsMap.put(new HotDog(), 150);
 
     }
+
+    public Map<Product, Double> getPriceProductsMap(){
+        return priceProductsMap;
+    }
+
+    public void setPriceProductsMap( Map<Product, Double> priceProductsMap){
+        this.priceProductsMap = priceProductsMap;
+    }
+
+    public Map<Product, Integer> getCountProductsMap(){
+        return countProductsMap;
+    }
+
+    public void setCountProductsMap( Map<Product, Integer> countProductsMap){
+        this.countProductsMap = countProductsMap;
+    }
+
 
     public void addProduct(Product product, int count, double price){
         priceProductsMap.put(product, price);

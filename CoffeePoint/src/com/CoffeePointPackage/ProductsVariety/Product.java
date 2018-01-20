@@ -8,7 +8,7 @@ package com.CoffeePointPackage.ProductsVariety;
 abstract public class Product {
 
     abstract public void productDescribtion();
-    abstract public void createProduct();
+    abstract public void createProduct();//Method for physical product creation
     @Override
     abstract public int hashCode();
     @Override

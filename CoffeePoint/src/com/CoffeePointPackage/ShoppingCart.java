@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class ShoppingCart {
 
-    public ArrayList<Product> selectedProducts = new ArrayList<Product>();
+    private ArrayList<Product> selectedProducts = new ArrayList<Product>();
 
     public ArrayList<Product> getProducts(){
         return selectedProducts;
