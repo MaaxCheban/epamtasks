@@ -13,6 +13,18 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="19" column="31" lean-forward="false" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Product.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/CoffeePointPackage/ProductsVariety/Product.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -51,7 +63,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CreditCard.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CreditCard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/PayPackage/CreditCard.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="40">
@@ -72,16 +84,6 @@
                 <element signature="e#1770#1771#0" expanded="true" />
                 <element signature="e#1802#1803#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Milk.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/CoffeePointPackage/ProductsVariety/Milk.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -198,10 +200,10 @@
         <option value="$PROJECT_DIR$/src/com/PayPackage/Cash.java" />
         <option value="$PROJECT_DIR$/src/com/CoffeePointPackage/ProductsVariety/Product.java" />
         <option value="$PROJECT_DIR$/src/com/Customer.java" />
-        <option value="$PROJECT_DIR$/src/com/Main.java" />
         <option value="$PROJECT_DIR$/src/com/CoffeePointPackage/ShoppingCart.java" />
         <option value="$PROJECT_DIR$/src/com/CoffeePointPackage/ProductsSystem.java" />
         <option value="$PROJECT_DIR$/src/com/CoffeePointPackage/CoffeePoint.java" />
+        <option value="$PROJECT_DIR$/src/com/Main.java" />
       </list>
     </option>
   </component>
@@ -784,16 +786,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/CoffeePointPackage/ProductsVariety/Milk.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -901,6 +893,16 @@
         <state relative-caret-position="40">
           <caret line="7" column="44" lean-forward="true" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="19" column="31" lean-forward="false" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

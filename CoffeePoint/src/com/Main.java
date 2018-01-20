@@ -18,7 +18,6 @@ public class Main {
         customer.chooseProduct(new CoffeeWithChocolateAndCream());
         customer.chooseProduct(new HotDog());
         customer.buyProducts();
-        customer.buyProducts();
 
         Customer customer2 = new Customer("Joshua", new Bonuses(900));
         customer2.initCoffeePoint(coffeePoint);
