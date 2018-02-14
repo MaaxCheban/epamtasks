@@ -11,18 +11,22 @@ public class Main {
 	// write your code here
         Task t = new Task();
         t.showState();
+        t.setAssign(true);
 
         t.changeState(new Reopened());
         t.showState();
 
         t.changeState(new Resolved());
         t.showState();
+        t.setAssign(true);
 
         t.changeState(new Reopened());
         t.showState();
+        t.setAssign(true);
 
         t.changeState(new Resolved());
         t.showState();
+        t.setAssign(true);
 
         t.changeState(new Closed());
         t.showState();

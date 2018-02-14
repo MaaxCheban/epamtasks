@@ -3,11 +3,13 @@ package com.WorkFlow;
 /**
  * Created by MAX on 14.02.2018.
  */
-public class Task {
-    State state;
+public class Task{
+    private State state;
+    private boolean isAsigned;
 
     public Task(){
         state = new Opened();
+        isAsigned = false;
     }
 
     public void changeState(State _state){
@@ -17,6 +19,8 @@ public class Task {
             case "Reopened state": state.reopenedState(this); break;
             case "Closed state": state.closeState(this); break;
         }
+
+        isAsigned = false;
     }
 
     void setState(State _state){
@@ -26,4 +30,9 @@ public class Task {
     public void showState(){
         state.showState();
     }
+
+    public void setAssign(boolean val){
+        isAsigned = val;
+    }
+
 }
