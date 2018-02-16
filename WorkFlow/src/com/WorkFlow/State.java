@@ -4,7 +4,7 @@ package com.WorkFlow;
  * Created by MAX on 14.02.2018.
  */
 public interface State {
-    abstract void showState();
+    void showState();
 
     default void openState(Task task){
         System.out.println("no opened state");
