@@ -3,15 +3,19 @@ package com.WorkFlow;
 /**
  * Created by MAX on 14.02.2018.
  */
-public abstract class State {
+public interface State {
     abstract void showState();
 
-    void openState(Task task){
+    default void openState(Task task){
+        System.out.println("no opened state");
     }
-    void resolveState(Task task){
+    default void resolveState(Task task){
+        System.out.println("no resolve state");
     }
-    void reopenedState(Task task){
+    default void reopenedState(Task task){
+        System.out.println("no reopened state");
     }
-    void closeState(Task task){
+    default void closeState(Task task){
+        System.out.println("no closed state");
     }
 }

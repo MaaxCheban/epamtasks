@@ -3,7 +3,7 @@ package com.WorkFlow;
 /**
  * Created by MAX on 14.02.2018.
  */
-public class Opened extends State {
+public class Opened implements State {
     public void showState(){
         System.out.println("Opened state");
     }
