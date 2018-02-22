@@ -41,5 +41,10 @@ public class DepartmentEntity {
     }
 
 
-
+    @Override
+    public String toString(){
+        return new String(dept_no + '\t' + '\t'
+                + dept_name + '\t' + '\t'
+                + location);
+    }
 }

@@ -1,31 +1,31 @@
 package com.cheban.service;
 
-import com.cheban.DAO.implementation.DepartmentDAOImpl;
 import com.cheban.DAO.implementation.EmployeeDAOImpl;
+import com.cheban.model.EmployeeEntity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
- * Created by MAX on 20.02.2018.
+ * Created by MAX on 22.02.2018.
  */
 public class EmployeeService {
 
-    public ResultSet readEmployee() throws SQLException {
+    public ArrayList<EmployeeEntity> readEmployee() throws SQLException {
         return new EmployeeDAOImpl().read();
     }
 
-    public int createEmployee() throws SQLException{
-        return new EmployeeDAOImpl().create();
+    public int createEmployee(EmployeeEntity employeeEntity) throws SQLException{
+        return new EmployeeDAOImpl().create(employeeEntity);
     }
 
-    public int updateEmployee() throws SQLException{
-        return new EmployeeDAOImpl().update();
+    public int updateEmployee(EmployeeEntity employeeEntity) throws SQLException{
+        return new EmployeeDAOImpl().update(employeeEntity);
     }
 
-    public int deleteEmployee() throws SQLException{
-        return new EmployeeDAOImpl().delete();
+    public int deleteEmployee(int emp_no) throws SQLException{
+        return new EmployeeDAOImpl().delete(emp_no);
     }
-
 
 }

@@ -1,10 +1,14 @@
 package com.cheban.View;
 
+import com.cheban.DAO.DepartmentDAO;
+import com.cheban.model.DepartmentEntity;
+import com.cheban.model.EmployeeEntity;
 import com.cheban.service.DepartmentService;
 import com.cheban.service.EmployeeService;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -58,7 +62,6 @@ public class View {
         menuMethods.put("22", this::readEmployee);
         menuMethods.put("23", this::updateEmployee);
         menuMethods.put("24", this::deleteEmployee);
-
     }
 
     public void showMenu(){
@@ -79,23 +82,25 @@ public class View {
         }
     }
 
-//----------------------------------------------------
+    public <T> void showEntity(ArrayList<T> entitiesList){
+        for(T entity: entitiesList){
+            System.out.println(entity.toString());
+        }
+    }
+
+    //----------------------------------------------------------
+
     public void readDepartment(){
         DepartmentService ds = new DepartmentService();
-        ResultSet rs = null;
         try{
-            rs = ds.readDepartment();
-            while(rs.next()){
-                System.out.print(rs.getString(1) + '\t' +
-                        rs.getString(2) + '\t' +
-                        rs.getString(3) + '\t');
+            ArrayList<DepartmentEntity> enitities = ds.readDepartment();
 
-                System.out.println();
-            }
+            showEntity(enitities);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
     public void readDepartmentByDeptNo(){
         DepartmentService ds = new DepartmentService();
@@ -104,14 +109,10 @@ public class View {
         System.out.println("Print please dept_no");
 
         dept_no = scanner.nextLine();
-        try(ResultSet rs = ds.readDepartmentByDeptNo(dept_no)) {
-            while(rs.next()){
-                System.out.print(rs.getString(1) + '\t' +
-                        rs.getString(2) + '\t' +
-                        rs.getString(3) + '\t');
+        try {
+            ArrayList<DepartmentEntity> enitities = ds.readDepartmentByDeptNo(dept_no);
 
-                System.out.println();
-            }
+            showEntity(enitities);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -122,8 +123,20 @@ public class View {
         DepartmentService ds = new DepartmentService();
 
         try {
+            String dept_no, dept_name, location;
 
-            ds.createDepartment();
+            System.out.println("Print dept_name");
+            dept_no = scanner.nextLine();
+
+            System.out.println("Print dept_no");
+            dept_name = scanner.nextLine();
+
+            System.out.println("Print location");
+            location = scanner.nextLine();
+
+            DepartmentEntity departmentEntity = new DepartmentEntity(dept_no, dept_name, location);
+
+            ds.createDepartment(departmentEntity);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -132,9 +145,18 @@ public class View {
 
     public void updateDepartment(){
         DepartmentService ds = new DepartmentService();
+        System.out.println("Print dept_no where to change");
+        String dept_no = scanner.nextLine();
 
+        System.out.println("Print name to change");
+        String dept_name = scanner.nextLine();
+
+        System.out.println("Print location to change");
+        String location = scanner.nextLine();
+
+        DepartmentEntity departmentEntity = new DepartmentEntity(dept_no, dept_name, location);
         try {
-            ds.updateDepartment();
+            ds.updateDepartment(departmentEntity);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -145,30 +167,28 @@ public class View {
         DepartmentService ds = new DepartmentService();
 
         try {
-            ds.deleteDepartment();
+
+            System.out.println("Print dept_no to delete");
+            String dept_no = scanner.nextLine();
+            ds.deleteDepartment(dept_no);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
 
-    //----------------------------------------------------
 
+    //----------------------------------------------------------
 
     public void readEmployee(){
 
-       EmployeeService es = new EmployeeService();
+        EmployeeService es = new EmployeeService();
 
+        try {
 
-        try(ResultSet rs = es.readEmployee()) {
-            while(rs.next()){
-                System.out.print(rs.getString(1) + '\t' +
-                        rs.getString(2) + '\t' +
-                        rs.getString(3) + '\t' +
-                        rs.getString(4) + '\t');
+            ArrayList<EmployeeEntity> enitities = es.readEmployee();
 
-                System.out.println();
-            }
+            showEntity(enitities);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -176,10 +196,28 @@ public class View {
     }
 
     public void createEmployee(){
-        EmployeeService es = new EmployeeService();
 
         try {
-            es.createEmployee();
+            Integer emp_no;
+            String emp_fname, emp_lname, dept_no;
+
+            System.out.println("Print emp_no to create");
+            emp_no = Integer.parseInt(scanner.nextLine());
+
+            System.out.println("Print emp_fname");
+            emp_fname = scanner.nextLine();
+
+            System.out.println("Print emp_lname");
+            emp_lname = scanner.nextLine();
+
+            System.out.println("Print dept_no");
+            dept_no = scanner.nextLine();
+
+            EmployeeEntity employeeEntity = new EmployeeEntity(emp_no, emp_fname, emp_lname, dept_no);
+
+            EmployeeService es = new EmployeeService();
+            es.createEmployee(employeeEntity);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -187,10 +225,27 @@ public class View {
     }
 
     public void updateEmployee(){
-        EmployeeService es = new EmployeeService();
 
         try {
-            es.updateEmployee();
+            Integer emp_no;
+            String emp_fname, emp_lname, dept_no;
+
+            System.out.println("Print emp_no to update");
+            emp_no = Integer.parseInt(scanner.nextLine());
+
+            System.out.println("Print emp_fname");
+            emp_fname = scanner.nextLine();
+
+            System.out.println("Print emp_lname");
+            emp_lname = scanner.nextLine();
+
+            System.out.println("Print dept_no");
+            dept_no = scanner.nextLine();
+
+            EmployeeEntity employeeEntity = new EmployeeEntity(emp_no, emp_fname, emp_lname, dept_no);
+
+            EmployeeService es = new EmployeeService();
+            es.updateEmployee(employeeEntity);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -201,14 +256,17 @@ public class View {
         EmployeeService es = new EmployeeService();
 
         try {
-            es.deleteEmployee();
+            System.out.println("Print emp_no to delete");
+            int emp_no = scanner.nextInt();
+            es.deleteEmployee(emp_no);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
 
-    //----------------------------------------------------
+    //----------------------------------------------------------
+
     public void showView(){
         String choice;
         do {

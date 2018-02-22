@@ -2,14 +2,17 @@ package com.cheban.DAO.implementation;
 
 import com.cheban.ConnectionManager.ConnectionManager;
 import com.cheban.DAO.EmployeeDAO;
+import com.cheban.Transformer.*;
+import com.cheban.model.EmployeeEntity;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Created by MAX on 20.02.2018.
+ * Created by MAX on 22.02.2018.
  */
-public class EmployeeDAOImpl implements EmployeeDAO{
+public class EmployeeDAOImpl implements EmployeeDAO {
 
     private final String FINDALL = "SELECT * FROM employee";
     private final String CREATE = "INSERT INTO employee VALUES(?, ?, ?, ?)";
@@ -18,43 +21,30 @@ public class EmployeeDAOImpl implements EmployeeDAO{
     Scanner scanner = new Scanner(System.in);
 
     @Override
-    public ResultSet read() throws SQLException {
+    public ArrayList<EmployeeEntity> read() throws SQLException {
         Connection connection = ConnectionManager.getConnection();
 
-        System.out.println(this);
+        System.out.println("Employee table");
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(FINDALL);
-        return rs;
 
+        Transformer transformer = new Transformer(new TransformEmployee());
+        ArrayList<EmployeeEntity> list = transformer.transform(rs);
+
+        return list;
     }
 
     @Override
-    public int create() throws SQLException{
+    public int create(EmployeeEntity employeeEntity) throws SQLException{
 
         Connection connection = ConnectionManager.getConnection();
 
         try(PreparedStatement pr = connection.prepareStatement(CREATE)) {
 
-            Integer emp_no;
-            String emp_fname, emp_lname, dept_no;
-
-            System.out.println("Print emp_no to update");
-            emp_no = Integer.parseInt(scanner.nextLine());
-
-            System.out.println("Print emp_fname");
-            emp_fname = scanner.nextLine();
-
-            System.out.println("Print emp_lname");
-            emp_lname = scanner.nextLine();
-
-            System.out.println("Print dept_no");
-            dept_no = scanner.nextLine();
-
-
-            pr.setInt(1, emp_no);
-            pr.setString(2, emp_fname);
-            pr.setString(3, emp_lname);
-            pr.setString(4, dept_no);
+            pr.setInt(1, employeeEntity.getEmpNo());
+            pr.setString(2, employeeEntity.getFname());
+            pr.setString(3, employeeEntity.getLname());
+            pr.setString(4, employeeEntity.getDeptNo());
 
             return pr.executeUpdate();
         }
@@ -62,33 +52,16 @@ public class EmployeeDAOImpl implements EmployeeDAO{
     }
 
     @Override
-    public int update() throws SQLException {
+    public int update(EmployeeEntity employeeEntity) throws SQLException {
 
         Connection connection = ConnectionManager.getConnection();
 
         try (PreparedStatement pr = connection.prepareStatement(UPDATE)) {
 
-            Integer emp_no;
-            String emp_fname, emp_lname, dept_no;
-
-            System.out.println("Print emp_no to update");
-            emp_no = Integer.parseInt(scanner.nextLine());
-
-            System.out.println("Print updated emp_fname");
-            emp_fname = scanner.nextLine();
-
-            System.out.println("Print updated emp_lname");
-            emp_lname = scanner.nextLine();
-
-            System.out.println("Print updated dept_no");
-            dept_no = scanner.nextLine();
-
-
-
-            pr.setInt(1, emp_no);
-            pr.setString(2, emp_fname);
-            pr.setString(3, emp_lname);
-            pr.setString(4, dept_no);
+            pr.setString(1, employeeEntity.getFname());
+            pr.setString(2, employeeEntity.getLname());
+            pr.setString(3, employeeEntity.getDeptNo());
+            pr.setInt(4, employeeEntity.getEmpNo());
 
 
             return pr.executeUpdate();
@@ -96,13 +69,12 @@ public class EmployeeDAOImpl implements EmployeeDAO{
     }
 
     @Override
-    public int delete() throws SQLException{
+    public int delete(int emp_no) throws SQLException{
 
         Connection connection = ConnectionManager.getConnection();
 
         try(PreparedStatement pr = connection.prepareStatement(DELETE)) {
-            System.out.println("Print emp_no to delete");
-            int emp_no = scanner.nextInt();
+
             pr.setInt(1, emp_no);
 
             return pr.executeUpdate();
@@ -114,3 +86,4 @@ public class EmployeeDAOImpl implements EmployeeDAO{
         return new String("Employee table");
     }
 }
+

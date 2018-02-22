@@ -2,8 +2,14 @@ package com.cheban.DAO.implementation;
 
 import com.cheban.ConnectionManager.ConnectionManager;
 import com.cheban.DAO.DepartmentDAO;
+import com.cheban.Transformer.TransformDepartment;
+import com.cheban.Transformer.TransformEmployee;
+import com.cheban.Transformer.Transformer;
+import com.cheban.model.DepartmentEntity;
+import com.cheban.model.EmployeeEntity;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -18,47 +24,44 @@ public class DepartmentDAOImpl implements DepartmentDAO {
     Scanner scanner = new Scanner(System.in);
 
     @Override
-    public ResultSet read() throws SQLException{
+    public ArrayList<DepartmentEntity> read() throws SQLException{
         Connection connection = ConnectionManager.getConnection();
 
-        System.out.println(this);
+        System.out.println("Department table");
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery(FINDALL);
-        return rs;
+
+        Transformer transformer = new Transformer(new TransformDepartment());
+        ArrayList<DepartmentEntity> list = transformer.transform(statement.executeQuery(FINDALL));
+
+        return list;
 
     }
 
     @Override
-    public ResultSet readByDeptNo(String dept_no) throws SQLException{
+    public ArrayList<DepartmentEntity> readByDeptNo(String dept_no) throws SQLException{
         Connection connection = ConnectionManager.getConnection();
         PreparedStatement ps = connection.prepareStatement(FINDBYDEPT_NO);
 
         ps.setString(1, dept_no);
 
-        return ps.executeQuery();
+
+        Transformer transformer = new Transformer(new TransformDepartment());
+        ArrayList<DepartmentEntity> list = transformer.transform(ps.executeQuery());
+
+        return list;
 
     }
 
     @Override
-    public int create() throws SQLException{
+    public int create(DepartmentEntity departmentEntity) throws SQLException{
 
         Connection connection = ConnectionManager.getConnection();
 
         try(PreparedStatement pr = connection.prepareStatement(CREATE)) {
 
-            String dept_no, dept_name, location;
-
-            System.out.println("Print dept_name");
-            dept_no = scanner.nextLine();
-
-            System.out.println("Print dept_no");
-            dept_name = scanner.nextLine();
-
-            System.out.println("Print location");
-            location = scanner.nextLine();
-            pr.setString(1, dept_no);
-            pr.setString(2, dept_name);
-            pr.setString(3, location);
+            pr.setString(1, departmentEntity.getDeptNo());
+            pr.setString(2, departmentEntity.getDeptName());
+            pr.setString(3, departmentEntity.getLocation());
 
             return pr.executeUpdate();
         }
@@ -66,37 +69,27 @@ public class DepartmentDAOImpl implements DepartmentDAO {
     }
 
     @Override
-    public int update() throws SQLException {
+    public int update(DepartmentEntity departmentEntity) throws SQLException {
 
         Connection connection = ConnectionManager.getConnection();
 
         try (PreparedStatement pr = connection.prepareStatement(UPDATE)) {
 
-            System.out.println("Print dept_no where to change");
-            String dept_no = scanner.nextLine();
-
-            System.out.println("Print name to change");
-            String dept_name = scanner.nextLine();
-
-            System.out.println("Print location to change");
-            String location = scanner.nextLine();
-
-            pr.setString(1, dept_name);
-            pr.setString(2, location);
-            pr.setString(3, dept_no);
+            pr.setString(1, departmentEntity.getDeptName());
+            pr.setString(2, departmentEntity.getLocation());
+            pr.setString(3, departmentEntity.getDeptNo());
 
             return pr.executeUpdate();
         }
     }
 
     @Override
-    public int delete() throws SQLException{
+    public int delete(String dep_no) throws SQLException{
 
         Connection connection = ConnectionManager.getConnection();
 
         try(PreparedStatement pr = connection.prepareStatement(DELETE)) {
-            System.out.println("Print dept_no to delete");
-            String dep_no = scanner.nextLine();
+
             pr.setString(1, dep_no);
 
             return pr.executeUpdate();
