@@ -17,7 +17,7 @@ import java.util.Scanner;
  */
 public class DepartmentDAOImpl implements DepartmentDAO {
     private final String FINDALL = "SELECT * FROM department";
-    private final String FINDBYDEPT_NO = "SELECT * FROM department WHERE dept_no = ?";
+    private final String FINDBYDEPTNO = "SELECT * FROM department WHERE dept_no = ?";
     private final String CREATE = "INSERT INTO department VALUES(?, ?, ?)";
     private final String UPDATE = "UPDATE department SET dept_name = ?, location = ?  WHERE dept_no = ?";
     private final String DELETE = "DELETE FROM department WHERE dept_no = ?";
@@ -40,7 +40,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
     @Override
     public ArrayList<DepartmentEntity> readByDeptNo(String dept_no) throws SQLException{
         Connection connection = ConnectionManager.getConnection();
-        PreparedStatement ps = connection.prepareStatement(FINDBYDEPT_NO);
+        PreparedStatement ps = connection.prepareStatement(FINDBYDEPTNO);
 
         ps.setString(1, dept_no);
 

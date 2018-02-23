@@ -46,6 +46,7 @@ public class View {
         menu.put("13", "Update department");
         menu.put("14", "Delete department");
         menu.put("15", "Read department by dept_no");
+        menu.put("16", "Delete department with employee move");
 
         //----------------------------------
 
@@ -75,6 +76,7 @@ public class View {
         menuMethods.put("13", this::updateDepartment);
         menuMethods.put("14", this::deleteDepartment);
         menuMethods.put("15", this::readDepartmentByDeptNo);
+        menuMethods.put("16", this::deleteWithEmployeeMove);
 
         //----------------------------------
 
@@ -176,6 +178,24 @@ public class View {
         }
 
     }
+
+    public void deleteWithEmployeeMove(){
+        DepartmentService ds = new DepartmentService();
+
+        try {
+            System.out.println("Print dept_no to delete");
+            String dept_delete = scanner.nextLine();
+
+            System.out.println("Print dept_no to update");
+            String dept_update = scanner.nextLine();
+
+            ds.deleteWithEmployeeMove(dept_delete, dept_update);
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 
     public void updateDepartment(){
         DepartmentService ds = new DepartmentService();

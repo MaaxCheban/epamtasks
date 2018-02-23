@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class EmployeeDAOImpl implements EmployeeDAO {
 
     private final String FINDALL = "SELECT * FROM employee";
+    private final String FINDBYDEPTNAME = "SELECT * FROM employee WHERE dept_no = ?";
     private final String CREATE = "INSERT INTO employee VALUES(?, ?, ?, ?)";
     private final String UPDATE = "UPDATE employee SET emp_fname = ?, emp_lname = ?, dept_no = ?  WHERE emp_no = ?";
     private final String DELETE = "DELETE FROM employee WHERE emp_no = ?";
@@ -79,6 +80,20 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
             return pr.executeUpdate();
         }
+    }
+
+    @Override
+    public ArrayList<EmployeeEntity> readByDeptNo(String dept_no) throws SQLException{
+        Connection connection = ConnectionManager.getConnection();
+        ArrayList<EmployeeEntity> entities = new ArrayList<>();
+
+        PreparedStatement pr = connection.prepareStatement(FINDBYDEPTNAME);
+        pr.setString(1, dept_no);
+
+        Transformer transformer = new Transformer(new TransformEmployee());
+        entities = transformer.transform(pr.executeQuery());
+
+        return entities;
     }
 
     @Override

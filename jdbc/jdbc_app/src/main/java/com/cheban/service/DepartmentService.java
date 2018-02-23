@@ -1,8 +1,12 @@
 package com.cheban.service;
 
+import com.cheban.ConnectionManager.ConnectionManager;
 import com.cheban.DAO.implementation.DepartmentDAOImpl;
+import com.cheban.DAO.implementation.EmployeeDAOImpl;
 import com.cheban.model.DepartmentEntity;
+import com.cheban.model.EmployeeEntity;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -31,5 +35,34 @@ public class DepartmentService {
         return new DepartmentDAOImpl().delete(dep_no);
     }
 
+    public int deleteWithEmployeeMove(String depToDelete, String depToMove) throws SQLException {
+        Connection connection = ConnectionManager.getConnection();
+        int deletedCount = 0;
+        try {
+            connection.setAutoCommit(false);
 
+            if(new DepartmentDAOImpl().readByDeptNo(depToDelete).isEmpty()){
+                System.out.println("Wrong department to delete");
+                return 0;
+            }
+
+            ArrayList<EmployeeEntity> employeeEntities = new EmployeeDAOImpl().readByDeptNo(depToDelete);
+
+
+            for(EmployeeEntity entity : employeeEntities){
+                entity.setDeptNo(depToMove);
+            }
+
+            deletedCount = new DepartmentDAOImpl().delete(depToDelete);
+
+            connection.commit();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            connection.setAutoCommit(true);
+        }
+
+        return deletedCount;
+    }
 }
