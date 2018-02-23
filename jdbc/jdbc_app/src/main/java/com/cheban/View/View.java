@@ -3,11 +3,17 @@ package com.cheban.View;
 import com.cheban.DAO.DepartmentDAO;
 import com.cheban.model.DepartmentEntity;
 import com.cheban.model.EmployeeEntity;
+import com.cheban.model.ProjectEntity;
+import com.cheban.model.WorksOnEntity;
 import com.cheban.service.DepartmentService;
 import com.cheban.service.EmployeeService;
+import com.cheban.service.ProjectService;
+import com.cheban.service.WorksOnService;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -50,6 +56,20 @@ public class View {
 
         //----------------------------------
 
+        menu.put("31", "Create project");
+        menu.put("32", "Read project");
+        menu.put("33", "Update project");
+        menu.put("34", "Delete project");
+
+        //----------------------------------
+
+        menu.put("41", "Create work on");
+        menu.put("42", "Read works on");
+        menu.put("43", "Update work on");
+        menu.put("44", "Delete work on");
+
+        //----------------------------------
+
         menuMethods.put("11", this::createDepartment);
         menuMethods.put("12", this::readDepartment);
         menuMethods.put("13", this::updateDepartment);
@@ -62,6 +82,20 @@ public class View {
         menuMethods.put("22", this::readEmployee);
         menuMethods.put("23", this::updateEmployee);
         menuMethods.put("24", this::deleteEmployee);
+
+        //----------------------------------
+
+        menuMethods.put("31", this::createProject);
+        menuMethods.put("32", this::readProject);
+        menuMethods.put("33", this::updateProject);
+        menuMethods.put("34", this::deleteProject);
+
+        //----------------------------------
+
+        menuMethods.put("41", this::createWorkOn);
+        menuMethods.put("42", this::readWorkOn);
+        menuMethods.put("43", this::updateWorkOn);
+        menuMethods.put("44", this::deleteWorkOn);
     }
 
     public void showMenu(){
@@ -76,7 +110,7 @@ public class View {
     public void showSubMenu(String choice){
         System.out.println("Sub Menu");
         for(Map.Entry<String, String> entry: menu.entrySet()){
-            if(entry.getKey().substring(0, 1).equals(choice) && entry.getKey().length() != 1 ){
+            if((entry.getKey().substring(0, 1).equals(choice)) && entry.getKey().length() != 1 ){
                 System.out.println(entry.getKey() + " " + entry.getValue());
             }
         }
@@ -259,6 +293,182 @@ public class View {
             System.out.println("Print emp_no to delete");
             int emp_no = scanner.nextInt();
             es.deleteEmployee(emp_no);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    //----------------------------------------------------------
+
+    public void readWorkOn(){
+
+        WorksOnService ws = new WorksOnService();
+
+        try {
+
+            ArrayList<WorksOnEntity> enitities = ws.readWorkOn();
+
+            showEntity(enitities);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void createWorkOn(){
+
+        try {
+
+            System.out.println("Print emp_no");
+            int emp_no = Integer.parseInt(scanner.nextLine());
+
+            System.out.println("Print project_no");
+            String project_no = scanner.nextLine();
+
+            System.out.println("Print job");
+            String job = scanner.nextLine();
+
+            System.out.println("Print enter_date, format yyyy-MM-dd");
+            String enter_date = scanner.nextLine();
+            java.sql.Date enterSqlDate = null;
+            try {
+                java.util.Date enterUtilDate = new SimpleDateFormat("yyyy-MM-dd").parse(enter_date);
+                enterSqlDate = new java.sql.Date(enterUtilDate.getTime());
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return;
+            }
+
+            WorksOnEntity worksOnEntity = new WorksOnEntity(emp_no, project_no, job, enterSqlDate);
+
+            WorksOnService ps = new WorksOnService();
+            ps.createWorkOn(worksOnEntity);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void updateWorkOn(){
+
+        try {
+            System.out.println("Print emp_no to update");
+            int emp_no = Integer.parseInt(scanner.nextLine());
+
+            System.out.println("Print project_no to update");
+            String project_no = scanner.nextLine();
+
+            System.out.println("Print updated job");
+            String job = scanner.nextLine();
+
+            System.out.println("Print updated enter_date, format(yyyy-MM-dd");
+            String enter_date = scanner.nextLine();
+            java.sql.Date enterSqlDate = null;
+            try {
+                java.util.Date enterUtilDate = new SimpleDateFormat("yyyy-MM-dd").parse(enter_date);
+                enterSqlDate = new java.sql.Date(enterUtilDate.getTime());
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return;
+            }
+
+            WorksOnEntity worksOnEntity = new WorksOnEntity(emp_no, project_no, job, enterSqlDate);
+
+            WorksOnService ps = new WorksOnService();
+            ps.updateWorkOn(worksOnEntity);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void deleteWorkOn(){
+
+        try {
+            WorksOnService es = new WorksOnService();
+            System.out.println("Print emp_no to delete");
+            int emp_no = scanner.nextInt();
+            es.deleteWorkOn(emp_no);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    //----------------------------------------------------------
+
+    public void readProject(){
+
+        ProjectService ps = new ProjectService();
+
+        try {
+
+            ArrayList<ProjectEntity> enitities = ps.readProject();
+
+            showEntity(enitities);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void createProject(){
+
+        try {
+
+
+            System.out.println("Print project_no to create");
+            String project_no = scanner.nextLine();
+
+            System.out.println("Print project_name");
+            String project_name = scanner.nextLine();
+
+            System.out.println("Print budget");
+            int budget = Integer.parseInt(scanner.nextLine());
+
+            ProjectEntity projectEntity = new ProjectEntity(project_no, project_name, budget);
+
+            ProjectService ps = new ProjectService();
+            ps.createProject(projectEntity);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void updateProject(){
+
+        try {
+            System.out.println("Print project_no to update");
+            String project_no = scanner.nextLine();
+
+            System.out.println("Print updated project_name");
+            String project_name = scanner.nextLine();
+
+            System.out.println("Print updated budget");
+            int budget = Integer.parseInt(scanner.nextLine());
+
+            ProjectEntity projectEntity = new ProjectEntity(project_no, project_name, budget);
+
+            ProjectService ps = new ProjectService();
+            ps.updateProject(projectEntity);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void deleteProject(){
+        ProjectService es = new ProjectService();
+
+        try {
+            System.out.println("Print emp_no to delete");
+            String project_no = scanner.nextLine();
+            es.deleteProject(project_no);
         } catch (SQLException e) {
             e.printStackTrace();
         }

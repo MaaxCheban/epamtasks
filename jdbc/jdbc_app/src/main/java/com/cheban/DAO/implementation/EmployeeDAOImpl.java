@@ -83,7 +83,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public String toString(){
-        return new String("Employee table");
+        return new String("Employee DaoImpl");
     }
 }
 

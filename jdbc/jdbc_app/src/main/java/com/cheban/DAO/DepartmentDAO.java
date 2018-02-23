@@ -12,5 +12,6 @@ import java.util.ArrayList;
 public interface DepartmentDAO extends GeneralDAO<DepartmentEntity>{
 
     ArrayList<DepartmentEntity> readByDeptNo(String dept_no) throws SQLException;
+
     int delete(String dep_no) throws SQLException;
 }

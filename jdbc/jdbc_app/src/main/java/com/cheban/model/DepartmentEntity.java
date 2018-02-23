@@ -6,9 +6,7 @@ import com.cheban.service.DepartmentService;
  * Created by MAX on 20.02.2018.
  */
 public class DepartmentEntity {
-    private String dept_no;
-    private String dept_name;
-    private String location;
+    private String dept_no, dept_name, location;
 
     public DepartmentEntity(String _dept_no, String _dept_name, String _location){
         dept_no = _dept_no;

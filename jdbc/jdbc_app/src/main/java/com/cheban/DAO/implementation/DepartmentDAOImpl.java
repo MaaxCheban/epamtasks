@@ -98,6 +98,6 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
     @Override
     public String toString(){
-        return new String("Department table");
+        return new String("Department DaoImpl");
     }
 }

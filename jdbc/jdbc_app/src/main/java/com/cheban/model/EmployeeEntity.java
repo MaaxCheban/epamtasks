@@ -48,7 +48,7 @@ public class EmployeeEntity {
 
     @Override
     public String toString(){
-        return new String(emp_no + "" + '\t' + '\t'
+        return new String(emp_no + "" +'\t' + '\t'
                 + emp_fname + '\t' + '\t'
                 + emp_lname + '\t' + '\t'
                 + dept_no);
