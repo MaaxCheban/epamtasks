@@ -14,6 +14,16 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cheban/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="EmployeeDAOImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cheban/DAO/implementation/EmployeeDAOImpl.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -41,7 +51,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DepartmentDAOImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DepartmentDAOImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cheban/DAO/implementation/DepartmentDAOImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
@@ -133,7 +143,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/cheban/View/Printable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cheban/Transform/Transform.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cheban/service/EmployeeService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cheban/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cheban/Transformer/Transformer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cheban/Transformer/TransformEmployee.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cheban/Transformer/Transformable.java" />
@@ -160,6 +169,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/cheban/DAO/implementation/EmployeeDAOImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cheban/View/View.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cheban/DAO/implementation/DepartmentDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cheban/Main.java" />
       </list>
     </option>
   </component>
@@ -810,11 +820,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="10" column="19" lean-forward="false" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-          <folding>
-            <marker date="1519330008225" expanded="true" signature="502:570" ph=" UPDATE statement (DEPARTMENT)" />
-            <marker date="1519330008225" expanded="true" signature="509:559" ph=" INSERT statement (DEPARTMENT)" />
-            <marker date="1519330008225" expanded="true" signature="825:849" ph=" SELECT statement (DEPARTMENT)" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -894,11 +900,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1519330008225" expanded="true" signature="502:570" ph=" UPDATE statement (DEPARTMENT)" />
-            <marker date="1519330008225" expanded="true" signature="509:559" ph=" INSERT statement (DEPARTMENT)" />
-            <marker date="1519330008225" expanded="true" signature="825:849" ph=" SELECT statement (DEPARTMENT)" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1060,18 +1062,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cheban/DAO/WorksOnDao.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cheban/DAO/ProjectDAO.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cheban/DAO/WorkOnDAO.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cheban/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <marker date="1519330008225" expanded="true" signature="502:570" ph=" UPDATE statement (DEPARTMENT)" />
-            <marker date="1519330008225" expanded="true" signature="509:559" ph=" INSERT statement (DEPARTMENT)" />
-            <marker date="1519330008225" expanded="true" signature="825:849" ph=" SELECT statement (DEPARTMENT)" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cheban/model/ProjectEntity.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cheban/Transformer/Transformer.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1154,6 +1144,14 @@
             <marker date="1519408109601" expanded="true" signature="791:859" ph=" UPDATE statement (DEPARTMENT)" />
             <marker date="1519408109601" expanded="true" signature="897:937" ph=" DELETE statement (DEPARTMENT)" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cheban/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
