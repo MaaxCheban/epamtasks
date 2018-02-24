@@ -13,22 +13,23 @@ public class Main {
         t.showState();
         t.setAssign(true);
 
-        t.changeState(new Reopened());
+
+        t.reopenState();
         t.showState();
 
-        t.changeState(new Resolved());
-        t.showState();
-        t.setAssign(true);
-
-        t.changeState(new Reopened());
+        t.resolveState();
         t.showState();
         t.setAssign(true);
 
-        t.changeState(new Resolved());
+        t.reopenState();
         t.showState();
         t.setAssign(true);
 
-        t.changeState(new Closed());
+        t.resolveState();
+        t.showState();
+        t.setAssign(true);
+
+        t.closeState();
         t.showState();
     }
 }

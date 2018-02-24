@@ -12,16 +12,16 @@ public class Task{
         isAsigned = false;
     }
 
-    public void changeState(State _state){
-
-        switch(_state.toString()){
-            case "Resolved state": state.resolveState(this); break;
-            case "Reopened state": state.reopenedState(this); break;
-            case "Closed state": state.closeState(this); break;
-        }
-
-        isAsigned = false;
+    public void resolveState(){
+        state.resolveState(this);
     }
+    public void reopenState(){
+        state.reopenedState(this);
+    }
+    public void closeState(){
+        state.closeState(this);
+    }
+
 
     void setState(State _state){
         state = _state;
