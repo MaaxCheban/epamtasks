@@ -42,8 +42,7 @@ public class DepartmentService {
             connection.setAutoCommit(false);
 
             if(new DepartmentDAOImpl().readByDeptNo(depToDelete).isEmpty()){
-                System.out.println("Wrong department to delete");
-                return 0;
+                throw new SQLException("Wrong department to delete");
             }
 
             ArrayList<EmployeeEntity> employeeEntities = new EmployeeDAOImpl().readByDeptNo(depToDelete);
@@ -51,9 +50,13 @@ public class DepartmentService {
 
             for(EmployeeEntity entity : employeeEntities){
                 entity.setDeptNo(depToMove);
+                new EmployeeDAOImpl().update(entity);
             }
 
+
             deletedCount = new DepartmentDAOImpl().delete(depToDelete);
+
+            System.out.println(deletedCount + " deleted rows");
 
             connection.commit();
 

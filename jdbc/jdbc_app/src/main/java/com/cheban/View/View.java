@@ -1,23 +1,20 @@
 package com.cheban.View;
 
 import com.cheban.DAO.DepartmentDAO;
+import com.cheban.DAO.implementation.MetaDataDaoImpl;
 import com.cheban.model.DepartmentEntity;
 import com.cheban.model.EmployeeEntity;
 import com.cheban.model.ProjectEntity;
+import com.cheban.model.TableStructure.TableStructure;
 import com.cheban.model.WorksOnEntity;
-import com.cheban.service.DepartmentService;
-import com.cheban.service.EmployeeService;
-import com.cheban.service.ProjectService;
-import com.cheban.service.WorksOnService;
+import com.cheban.service.*;
+import javafx.scene.control.Tab;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by MAX on 20.02.2018.
@@ -38,6 +35,7 @@ public class View {
         menu.put("2", "employee");
         menu.put("3", "project");
         menu.put("4", "works_on");
+        menu.put("A", "Database structure");
 
         //----------------------------------
 
@@ -98,6 +96,9 @@ public class View {
         menuMethods.put("42", this::readWorkOn);
         menuMethods.put("43", this::updateWorkOn);
         menuMethods.put("44", this::deleteWorkOn);
+
+        //----------------------------------
+        menuMethods.put("A", this::showTableStructure);
     }
 
     public void showMenu(){
@@ -118,7 +119,7 @@ public class View {
         }
     }
 
-    public <T> void showEntity(ArrayList<T> entitiesList){
+    public <T> void showEntity(List<T> entitiesList){
         for(T entity: entitiesList){
             System.out.println(entity.toString());
         }
@@ -497,24 +498,36 @@ public class View {
 
     //----------------------------------------------------------
 
+    public void showTableStructure() throws SQLException{
+        MetaDataService metaDataService = new MetaDataService();
+
+        List<TableStructure> tableStructures = metaDataService.showTableStructure();
+
+        showEntity(tableStructures);
+
+    }
+
+
+    //----------------------------------------------------------
+
     public void showView(){
         String choice;
         do {
+
             showMenu();
 
             System.out.println("Select menu point");
             choice = scanner.nextLine();
 
-            if(!choice.equals("Q")){
+            if(choice.matches("^\\d")){
                 showSubMenu(choice);
                 System.out.println("Select submenu point");
-
                 choice = scanner.nextLine();
+            }
 
-                try {
-                    menuMethods.get(choice).print();
-                } catch (Exception e) {
-                }
+            try {
+                menuMethods.get(choice).print();
+            } catch (Exception e) {
             }
         }while(!choice.equals("Q"));
 
