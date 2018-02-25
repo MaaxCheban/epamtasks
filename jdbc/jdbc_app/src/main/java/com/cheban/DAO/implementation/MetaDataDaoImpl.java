@@ -1,6 +1,7 @@
 package com.cheban.DAO.implementation;
 
 import com.cheban.ConnectionManager.ConnectionManager;
+import com.cheban.DAO.MetaDataDAO;
 import com.cheban.model.TableStructure.ColumnStructure;
 import com.cheban.model.TableStructure.TableStructure;
 
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * Created by MAX on 24.02.2018.
  */
-public class MetaDataDaoImpl {
+public class MetaDataDaoImpl implements MetaDataDAO{
 
 
     public List<TableStructure> getTablesStructures() throws SQLException{
