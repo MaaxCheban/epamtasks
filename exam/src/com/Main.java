@@ -1,7 +1,6 @@
 package com;
 
-import com.ChemistryDepartment.ChemistryManager;
-import com.ChemistryDepartment.View;
+import com.View.View;
 
 public class Main {
 

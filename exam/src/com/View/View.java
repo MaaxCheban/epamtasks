@@ -1,4 +1,7 @@
-package com.ChemistryDepartment;
+package com.View;
+
+import com.ChemistryDepartment.ChemistryManager;
+import com.ChemistryDepartment.ChemistryProduct;
 
 import java.util.HashMap;
 import java.util.Map;

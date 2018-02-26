@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class ChemistryManager {
     List<ChemistryProduct> chemistryProducts;
-    ChemistryManager(){
+    public ChemistryManager(){
         chemistryProducts = new ArrayList<>();
         chemistryProducts.add(new Gala(800));
         chemistryProducts.add(new Muscul(1000));
